@@ -1,0 +1,26 @@
+public static void main(String[] args) {
+    // Configuração do Bootcamp (Cursos e Mentorias)
+    Curso cursoJava = new Curso();
+    cursoJava.setTitulo("Java Avançado");
+    cursoJava.setCargaHoraria(10);
+
+    Bootcamp bootcamp = new Bootcamp();
+    bootcamp.setNome("Bootcamp Fullstack");
+    bootcamp.getConteudos().add(cursoJava);
+
+    // Aluno se inscrevendo
+    Dev devAna = new Dev();
+    devAna.setNome("Ana");
+    devAna.inscreverBootcamp(bootcamp);
+
+    // Tentativa de gerar certificado antes de terminar
+    devAna.gerarCertificado(bootcamp); 
+
+    // Finalizando o curso
+    devAna.progredir(); 
+
+    // Gerando e exibindo o certificado
+    Optional<Certificado> certificadoAna = devAna.gerarCertificado(bootcamp);
+    
+    certificadoAna.ifPresent(System.out::println);
+}
