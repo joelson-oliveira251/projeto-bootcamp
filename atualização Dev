@@ -1,0 +1,23 @@
+public class Dev {
+    private String nome;
+    private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
+    private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+    private Certificado certificado; // Novo atributo
+
+    // ... (métodos anteriores permanecem iguais)
+
+    public Optional<Certificado> gerarCertificado(Bootcamp bootcamp) {
+        // Regra de negócio: Só ganha certificado se terminar todos os conteúdos do bootcamp
+        if (this.conteudosConcluidos.containsAll(bootcamp.getConteudos())) {
+            this.certificado = new Certificado(this.nome, bootcamp.getNome(), this.calcularTotalXp());
+            return Optional.of(this.certificado);
+        } else {
+            System.err.println(this.nome + ", você ainda possui conteúdos pendentes para este certificado!");
+            return Optional.empty();
+        }
+    }
+
+    public Certificado getCertificado() {
+        return certificado;
+    }
+}
