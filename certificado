@@ -1,0 +1,25 @@
+public class Certificado {
+    private String nomeDev;
+    private String nomeBootcamp;
+    private double xpAdquirido;
+    private LocalDate dataEmissao;
+
+    public Certificado(String nomeDev, String nomeBootcamp, double xpAdquirido) {
+        this.nomeDev = nomeDev;
+        this.nomeBootcamp = nomeBootcamp;
+        this.xpAdquirido = xpAdquirido;
+        this.dataEmissao = LocalDate.now();
+    }
+
+    @Override
+    public String toString() {
+        return "------------------------------------------\n" +
+               "        CERTIFICADO DE CONCLUSÃO          \n" +
+               "------------------------------------------\n" +
+               "Certificamos que " + nomeDev + "\n" +
+               "concluiu com êxito o " + nomeBootcamp + "\n" +
+               "com total de " + xpAdquirido + " XP atingidos.\n" +
+               "Data: " + dataEmissao + "\n" +
+               "------------------------------------------";
+    }
+}
